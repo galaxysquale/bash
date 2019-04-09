@@ -37,5 +37,5 @@ else
 	echo "<?php phpinfo();" >> $ROOT_DIR$1/web/app.php
 
 	# Relancer Apache
-	systemctl restart apache2.service
+	/etc/init.d/apache2 reload
 fi
