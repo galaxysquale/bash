@@ -7,7 +7,7 @@
 ##
 
 #Définir le répertoire de création du dossier racine Apache
-ROOT_DIR="/root/www/"
+ROOT_DIR="/home/www/"
 
 if [ $# == 0 ]
 then
@@ -20,8 +20,8 @@ else
 
 	cp ./template-symfony /etc/apache2/sites-available/$1.conf
 
-	#Créer le dossier dans le dossier /root/www
-	mkdir -p  $ROOT_DIR$1/
+	#Créer le dossier web dans le dossier ROOT_DIR
+	mkdir -p  $ROOT_DIR$1/web
 
 	#Remplacer "template" par "vhost_name"dans le fichier de configuration
 	sed -i 's/template/'$1'/g' /etc/apache2/sites-available/$1.conf
@@ -33,9 +33,9 @@ else
 	echo "10.31.99.60 $1.wrk www.$1.wrk" >> /etc/hosts
 
 	#Vérifier l'execution globale
-	touch $ROOT_DIR/app.php
-	echo "<?php phpinfo();" >> $ROOT_DIR/app.php
+	touch $ROOT_DIR$1/web/app.php
+	echo "<?php phpinfo();" >> $ROOT_DIR$1/web/app.php
 
 	# Relancer Apache
-	service apache2 reload
+	systemctl restart apache2.service
 fi
