@@ -1,0 +1,22 @@
+<VirtualHost *:80>
+	ServerAdmin fayet.pierre@hotmail.fr
+	ServerName template.wrk
+	ServerAlias www.template.wrk
+	ServerAlias *.template.wrk
+	
+	DocumentRoot /home/www/template/web
+
+# Configuration spécifique symfony 3
+
+	<Directory "/home/www/template/web">
+		Require all granted
+		FallbackResource /app.php
+	</Directory>
+	
+	#Par sécurité pas de ressources dans bundles
+
+	<Directory "/home/www/template/web/bundles">
+		FallbackResource disabled
+	</Directory>
+
+</VirtualHost>

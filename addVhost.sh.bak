@@ -6,14 +6,6 @@
 # ./addvhost vhost_name [use_ssl]
 ##
 
-<<<<<<< HEAD
-
-
-
-
-
-=======
->>>>>>> symfony
 #Définir le répertoire de création du dossier racine Apache
 ROOT_DIR="/home/www/"
 
@@ -23,10 +15,6 @@ then
 	exit -1
 else
 
-<<<<<<< HEAD
-
-=======
->>>>>>> symfony
 	# Copier le fichier template-symfony vers /etc/apache2/sites-available
 	#avec le nom vhost_name.conf
 
